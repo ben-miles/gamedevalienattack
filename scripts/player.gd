@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
+var laser_scene = preload("res://scenes/laser.tscn")
+
 func shoot():
-	var laser_scene = load("res://scenes/laser.tscn")
 	var laser_instance = laser_scene.instantiate()
 	add_child(laser_instance)
 
