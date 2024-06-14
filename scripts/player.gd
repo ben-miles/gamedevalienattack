@@ -5,6 +5,7 @@ var laser_scene = preload("res://scenes/laser.tscn")
 func shoot():
 	var laser_instance = laser_scene.instantiate()
 	add_child(laser_instance)
+	laser_instance.global_position.x += 80
 
 func _physics_process(delta):
 	velocity = Vector2(0,0)
