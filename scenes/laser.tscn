@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmljbxxojasvk"]
+
+[ext_resource type="Texture2D" uid="uid://b6ll5pddp1630" path="res://assets/textures/laser-bolts_03.png" id="1_qq4ss"]
+[ext_resource type="Script" path="res://scripts/laser.gd" id="1_rys64"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0lt7n"]
+radius = 13.0
+height = 64.0
+
+[node name="Laser" type="Area2D"]
+script = ExtResource("1_rys64")
+speed = 20
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_qq4ss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0lt7n")
