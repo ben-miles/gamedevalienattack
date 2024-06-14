@@ -1,16 +1,13 @@
 extends CharacterBody2D
 
 var laser_scene = preload("res://scenes/laser.tscn")
-var laser_container
+@onready var laser_container = get_node("LaserContainer")
 
 func shoot():
 	var laser_instance = laser_scene.instantiate()
 	laser_container.add_child(laser_instance)
 	laser_instance.global_position = global_position
 	laser_instance.global_position.x += 80
-
-func _ready():
-	laser_container = get_node("LaserContainer")
 
 func _physics_process(delta):
 	velocity = Vector2(0,0)
