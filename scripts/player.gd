@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var laser_scene = preload("res://scenes/laser.tscn")
-@onready var laser_container = get_node("LaserContainer")
+@onready var laser_container = $LaserContainer
 
 func shoot():
 	var laser_instance = laser_scene.instantiate()
