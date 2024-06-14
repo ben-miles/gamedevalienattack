@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+func shoot():
+	var laser_scene = load("res://scenes/laser.tscn")
+	var laser_instance = laser_scene.instantiate()
+	add_child(laser_instance)
+
 func _physics_process(delta):
 	velocity = Vector2(0,0)
 	var force = 300
@@ -17,3 +22,7 @@ func _physics_process(delta):
 	
 	var screen_size = get_viewport_rect().size
 	global_position = global_position.clamp(Vector2(0,0), screen_size)
+	
+func _process(delta):
+	if Input.is_action_just_pressed("player_shoot"):
+		shoot()
