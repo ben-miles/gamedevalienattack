@@ -16,3 +16,5 @@ texture = ExtResource("1_nlu25")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(6.5, 6.5)
 shape = SubResource("CircleShape2D_5opg7")
+
+[node name="LaserContainer" type="Node" parent="."]

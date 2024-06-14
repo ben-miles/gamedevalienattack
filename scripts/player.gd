@@ -1,11 +1,16 @@
 extends CharacterBody2D
 
 var laser_scene = preload("res://scenes/laser.tscn")
+var laser_container
 
 func shoot():
 	var laser_instance = laser_scene.instantiate()
-	add_child(laser_instance)
+	laser_container.add_child(laser_instance)
+	laser_instance.global_position = global_position
 	laser_instance.global_position.x += 80
+
+func _ready():
+	laser_container = get_node("LaserContainer")
 
 func _physics_process(delta):
 	velocity = Vector2(0,0)
@@ -24,7 +29,7 @@ func _physics_process(delta):
 	
 	var screen_size = get_viewport_rect().size
 	global_position = global_position.clamp(Vector2(0,0), screen_size)
-	
+
 func _process(delta):
 	if Input.is_action_just_pressed("player_shoot"):
 		shoot()
