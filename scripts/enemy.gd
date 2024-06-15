@@ -13,3 +13,6 @@ func _physics_process(delta):
 
 func _on_screen_exited():
 	queue_free()
+
+func die():
+	queue_free()

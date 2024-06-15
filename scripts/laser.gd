@@ -15,4 +15,4 @@ func _on_screen_exited():
 
 func _on_area_entered(area):
 	queue_free()
-	area.queue_free()
+	area.die()
