@@ -8,7 +8,5 @@ func _ready():
 
 func _process(delta):
 	path_follow.progress_ratio -= 0.35 * delta
-	print(path_follow.progress_ratio)
 	if(path_follow.progress_ratio <= 0.1):
 		queue_free()
-		print('path enemy despawned')
