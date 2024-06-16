@@ -6,6 +6,35 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5opg7"]
 
+[sub_resource type="Gradient" id="Gradient_b4w3s"]
+offsets = PackedFloat32Array(0, 0.474074, 1)
+colors = PackedColorArray(0, 1, 1, 0.235294, 0.631373, 1, 0.945098, 1, 1, 0, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l4ak6"]
+gradient = SubResource("Gradient_b4w3s")
+
+[sub_resource type="Curve" id="Curve_71crf"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0o0og"]
+curve = SubResource("Curve_71crf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3n21c"]
+lifetime_randomness = 0.3
+emission_shape = 3
+emission_box_extents = Vector3(1, 15, 1)
+particle_flag_disable_z = true
+spread = 30.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = -200.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 7.0
+scale_max = 12.0
+scale_curve = SubResource("CurveTexture_0o0og")
+color_ramp = SubResource("GradientTexture1D_l4ak6")
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
 motion_mode = 1
@@ -24,3 +53,7 @@ shape = SubResource("CircleShape2D_5opg7")
 [node name="LaserSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_a2k5b")
 
+[node name="FlameParticleEffect" type="GPUParticles2D" parent="."]
+position = Vector2(-61, 0)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_3n21c")
