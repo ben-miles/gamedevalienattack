@@ -4,6 +4,7 @@ signal took_damage
 
 var laser_scene = preload("res://scenes/laser.tscn")
 @onready var laser_container = $LaserContainer
+@onready var laser_sound = $LaserSound
 
 func _physics_process(delta):
 	velocity = Vector2(0,0)
@@ -35,6 +36,7 @@ func shoot():
 	laser_container.add_child(laser_instance)
 	laser_instance.global_position = global_position
 	laser_instance.global_position.x += 80
-	
+	laser_sound.play()
+
 func take_damage():
 	emit_signal("took_damage")
