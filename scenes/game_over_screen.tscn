@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://1cm3qi1tjxy"]
+
+[ext_resource type="FontFile" uid="uid://bbeiy6gc68yoc" path="res://assets/font/Kenney Blocks.ttf" id="1_cujnh"]
+[ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_v31yt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hrrk"]
+bg_color = Color(1, 0, 0, 0.396078)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_h3ypj"]
+font = ExtResource("1_cujnh")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_bfovt"]
+font = ExtResource("1_cujnh")
+font_size = 48
+font_color = Color(1, 1, 0, 1)
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v31yt")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -334.0
+offset_top = -198.0
+offset_right = 335.0
+offset_bottom = 198.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7hrrk")
+
+[node name="GameOver" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -166.0
+offset_right = 208.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_h3ypj")
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -49.5
+offset_right = 208.0
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "SCORE: 9999"
+label_settings = SubResource("LabelSettings_bfovt")
+horizontal_alignment = 1
+
+[node name="Retry" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = 84.0
+offset_right = 88.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_cujnh")
+theme_override_font_sizes/font_size = 24
+text = "PLAY AGAIN"
+
+[connection signal="pressed" from="Panel/Retry" to="." method="_on_retry_pressed"]
