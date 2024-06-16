@@ -13,7 +13,7 @@ func _ready():
 	hud.set_lives(lives)
 
 func _on_enemy_despawner_area_entered(area):
-	area.die()
+	area.queue_free()
 
 func _on_player_took_damage():
 	lives -= 1
