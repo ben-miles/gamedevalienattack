@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal took_damage
+
 var laser_scene = preload("res://scenes/laser.tscn")
 @onready var laser_container = $LaserContainer
 
@@ -30,3 +32,9 @@ func _physics_process(delta):
 func _process(delta):
 	if Input.is_action_just_pressed("player_shoot"):
 		shoot()
+
+func die():
+	queue_free()
+
+func take_damage():
+	emit_signal("took_damage")

@@ -14,5 +14,9 @@ func _physics_process(delta):
 func _on_screen_exited():
 	queue_free()
 
+func _on_body_entered(body):
+	body.take_damage()
+	die()
+
 func die():
 	queue_free()
