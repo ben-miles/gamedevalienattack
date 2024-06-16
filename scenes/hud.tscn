@@ -1,8 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cml7aivn1os6e"]
+[gd_scene load_steps=5 format=3 uid="uid://cml7aivn1os6e"]
 
 [ext_resource type="FontFile" uid="uid://bbeiy6gc68yoc" path="res://assets/font/Kenney Blocks.ttf" id="1_vmyc7"]
+[ext_resource type="Texture2D" uid="uid://km7sy7rtw6q4" path="res://assets/textures/power-up_01.png" id="2_3jjvb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y5fhq"]
+font = ExtResource("1_vmyc7")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_1j0bp"]
 font = ExtResource("1_vmyc7")
 font_size = 48
 
@@ -21,3 +26,19 @@ offset_right = 382.0
 offset_bottom = 75.0
 text = "SCORE: 9999"
 label_settings = SubResource("LabelSettings_y5fhq")
+
+[node name="LivesLeft" type="Label" parent="."]
+offset_left = 1173.0
+offset_right = 1283.0
+offset_bottom = 75.0
+text = "X 3"
+label_settings = SubResource("LabelSettings_1j0bp")
+
+[node name="LifeTextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1097.0
+offset_top = 11.0
+offset_right = 1225.0
+offset_bottom = 139.0
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("2_3jjvb")
