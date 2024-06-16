@@ -5,12 +5,6 @@ signal took_damage
 var laser_scene = preload("res://scenes/laser.tscn")
 @onready var laser_container = $LaserContainer
 
-func shoot():
-	var laser_instance = laser_scene.instantiate()
-	laser_container.add_child(laser_instance)
-	laser_instance.global_position = global_position
-	laser_instance.global_position.x += 80
-
 func _physics_process(delta):
 	velocity = Vector2(0,0)
 	var force = 300
@@ -36,5 +30,11 @@ func _process(delta):
 func die():
 	queue_free()
 
+func shoot():
+	var laser_instance = laser_scene.instantiate()
+	laser_container.add_child(laser_instance)
+	laser_instance.global_position = global_position
+	laser_instance.global_position.x += 80
+	
 func take_damage():
 	emit_signal("took_damage")
