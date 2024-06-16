@@ -19,7 +19,7 @@ func _on_player_took_damage():
 	player_die_sound.play()
 	lives -= 1
 	hud.set_lives(lives)
-	if(lives == 0):		
+	if(lives == 0):
 		player.die()
 		await get_tree().create_timer(1.5).timeout
 		var game_over_screen_instance = game_over_screen.instantiate()
@@ -29,6 +29,10 @@ func _on_player_took_damage():
 func _on_enemy_spawner_enemy_spawned(enemy_instance):
 	enemy_instance.connect("died", _on_enemy_died)
 	add_child(enemy_instance)
+
+func _on_enemy_spawner_path_enemy_spawned(path_enemy_instance):
+	add_child(path_enemy_instance)
+	path_enemy_instance.enemy.connect("died", _on_enemy_died)
 
 func _on_enemy_died():
 	score += 100
