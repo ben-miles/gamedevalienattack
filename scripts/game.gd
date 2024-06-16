@@ -20,6 +20,7 @@ func _on_player_took_damage():
 	hud.set_lives(lives)
 	if(lives == 0):
 		player.die()
+		await get_tree().create_timer(1.5).timeout
 		var game_over_screen_instance = game_over_screen.instantiate()
 		game_over_screen_instance.set_score(score)
 		$UI.add_child(game_over_screen_instance)
