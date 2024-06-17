@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://5gbthj3j2q6e"]
+[gd_scene load_steps=12 format=3 uid="uid://5gbthj3j2q6e"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_8ljd3"]
 [ext_resource type="Texture2D" uid="uid://c2jgcrsqxv01v" path="res://assets/textures/bg.png" id="1_aijun"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dmq16kpopb0yi" path="res://assets/audio/hit.wav" id="7_317o4"]
 [ext_resource type="AudioStream" uid="uid://5g8rqgk5ydik" path="res://assets/audio/explode.wav" id="8_sr7g3"]
 [ext_resource type="PackedScene" uid="uid://bbajc4aagkia3" path="res://scenes/path_enemy.tscn" id="9_md0nx"]
+[ext_resource type="Script" path="res://scripts/ScrollingBG.gd" id="10_cdvw3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7adrr"]
 size = Vector2(85.5, 767)
@@ -20,12 +21,6 @@ script = ExtResource("1_8ljd3")
 
 [node name="HUD" parent="UI" instance=ExtResource("2_6wllj")]
 script = ExtResource("3_pg87p")
-
-[node name="Background" type="TextureRect" parent="."]
-offset_right = 1280.0
-offset_bottom = 720.0
-texture = ExtResource("1_aijun")
-stretch_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("2_we5op")]
 position = Vector2(94, 360)
@@ -47,6 +42,25 @@ stream = ExtResource("7_317o4")
 stream = ExtResource("8_sr7g3")
 
 [node name="PathEnemy" parent="." instance=ExtResource("9_md0nx")]
+
+[node name="ScrollingBG" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+script = ExtResource("10_cdvw3")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ScrollingBG"]
+motion_mirroring = Vector2(600, 600)
+
+[node name="Sprite2D" type="Sprite2D" parent="ScrollingBG/ParallaxLayer"]
+position = Vector2(300, 300)
+texture = ExtResource("1_aijun")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ScrollingBG/ParallaxLayer"]
+position = Vector2(900, 300)
+texture = ExtResource("1_aijun")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ScrollingBG/ParallaxLayer"]
+position = Vector2(1500, 300)
+texture = ExtResource("1_aijun")
 
 [connection signal="took_damage" from="Player" to="." method="_on_player_took_damage"]
 [connection signal="enemy_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_enemy_spawned"]
